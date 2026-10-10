@@ -101,17 +101,6 @@ export default function App() {
     e.preventDefault();
     setIsSubmitting(true);
     setFormSubmitted(true);
-    
-    // Auto-compose direct WhatsApp consultation message
-    const waText = encodeURIComponent(
-      `*New Inquiry - Satya Builders & Colonisers Website*\n\n` +
-      `*Name:* ${leadForm.name}\n` +
-      `*Phone:* ${leadForm.phone}\n` +
-      `*Email:* ${leadForm.email || 'N/A'}\n` +
-      `*Service / Project:* ${leadForm.service}\n` +
-      `*Requirement:* ${leadForm.message}\n\n` +
-      `_Connecting to Sector-2 Channi Himmat Office_`
-    );
 
     try {
       await fetch('https://formsubmit.co/ajax/satyabuildersandcolonisers@gmail.com', {
@@ -162,13 +151,11 @@ export default function App() {
               +91 941 914 3358
             </a>
             <a 
-              href="https://wa.me/919419143358?text=Hello%20Satya%20Builders,%20I%20would%20like%20to%20consult%20regarding%20property%20in%20Jammu."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full border border-emerald-300 font-semibold transition-all"
+              href="mailto:satyabuildersandcolonisers@gmail.com"
+              className="inline-flex items-center gap-1.5 bg-[#f4eee3] hover:bg-[#eae2d3] text-[#5c5449] hover:text-[#181614] px-3 py-1 rounded-full border border-[#eadfd0] font-semibold transition-all"
             >
-              <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
-              <span>WhatsApp Office</span>
+              <Mail className="w-3.5 h-3.5 text-[#b48a58]" />
+              <span>Email Office</span>
             </a>
           </div>
         </div>
@@ -849,9 +836,7 @@ export default function App() {
                 </div>
                 <div className="mt-6">
                   <a
-                    href="https://wa.me/919419143358?text=Hello%20Satya%20Builders,%20I%20am%20interested%20in%20Peehar%20Villas,%20Trikuta%20Nagar%20South%20Extension.%20Please%20share%20details."
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="#contact"
                     className="text-xs font-bold uppercase tracking-wider text-cyan-700 flex items-center gap-1.5 hover:gap-2.5 transition-all"
                   >
                     <span>Enquire About Peehar Villas</span>
@@ -939,13 +924,11 @@ export default function App() {
 
                 <div className="pt-2 flex flex-wrap gap-4">
                   <a 
-                    href="https://wa.me/919419143358?text=Hello%20Pushpinder%20Ji,%20I%20would%20like%20to%20discuss%20a%20property%20consultation."
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs tracking-wider uppercase inline-flex items-center gap-2 shadow-lg shadow-emerald-700/20 transition-all"
+                    href="#contact"
+                    className="px-6 py-3 rounded-xl bg-gradient-to-r from-[#8c6738] via-[#b48a58] to-[#d4af7a] text-white font-semibold text-xs tracking-wider uppercase inline-flex items-center gap-2 shadow-lg shadow-[#b48a58]/25 transition-all"
                   >
-                    <MessageSquare className="w-4 h-4" />
-                    Direct WhatsApp with Founder
+                    <Mail className="w-4 h-4" />
+                    Send Inquiry
                   </a>
                   <a 
                     href="tel:+919419143358"
@@ -1127,23 +1110,7 @@ export default function App() {
                     <Send className="w-4 h-4" />
                   </button>
 
-                  {/* Optional WhatsApp Alternative */}
-                  <div className="pt-2 text-center">
-                    <div className="relative flex py-2 items-center">
-                      <div className="flex-grow border-t border-[#eadfd0]" />
-                      <span className="flex-shrink mx-4 text-[11px] font-semibold uppercase tracking-wider text-[#8a7f70]">Or Connect Instantly</span>
-                      <div className="flex-grow border-t border-[#eadfd0]" />
-                    </div>
-                    <a 
-                      href="https://wa.me/919419143358?text=Hello%20Pushpinder%20Ji,%20I%20would%20like%20to%20discuss%20a%20property%20consultation." 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="w-full py-3.5 rounded-xl text-xs font-bold tracking-wider uppercase bg-emerald-600 hover:bg-emerald-500 text-white shadow-md shadow-emerald-700/20 hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center justify-center gap-2"
-                    >
-                      <MessageSquare className="w-4 h-4" />
-                      <span>Chat Directly on WhatsApp (+91 941 914 3358)</span>
-                    </a>
-                  </div>
+
 
                   {formSubmitted && (
                     <motion.div 
