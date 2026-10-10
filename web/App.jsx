@@ -1082,6 +1082,7 @@ export default function App() {
                         <option value="Construction Services">Turnkey Construction Services</option>
                         <option value="Architecture & Design">Architectural &amp; 3D Elevation Design</option>
                         <option value="Offices & Commercial Spaces">Offices &amp; Commercial Spaces</option>
+                        <option value="Other">Other</option>
                       </select>
                     </div>
                   </div>
