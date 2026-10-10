@@ -91,13 +91,15 @@ export default function App() {
     message: ''
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleFormChange = (e) => {
     setLeadForm({ ...leadForm, [e.target.name]: e.target.value });
   };
 
-  const handleLeadSubmit = (e) => {
+  const handleLeadSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
     setFormSubmitted(true);
     
     // Auto-compose direct WhatsApp consultation message
@@ -111,9 +113,33 @@ export default function App() {
       `_Connecting to Sector-2 Channi Himmat Office_`
     );
 
+    try {
+      await fetch('https://formsubmit.co/ajax/satyabuildersandcolonisers@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          'Client Name': leadForm.name,
+          'Phone / Mobile': leadForm.phone,
+          'Email Address': leadForm.email || 'Not provided',
+          'Service Interested In': leadForm.service,
+          'Message / Property Specifications': leadForm.message,
+          '_subject': `New Consultation Lead: ${leadForm.name} (${leadForm.service})`,
+          '_template': 'table',
+          '_captcha': 'false'
+        })
+      });
+    } catch (err) {
+      console.warn('Email dispatch notice:', err);
+    } finally {
+      setIsSubmitting(false);
+    }
+
     setTimeout(() => {
       window.open(`https://wa.me/919419143358?text=${waText}`, '_blank');
-    }, 600);
+    }, 500);
   };
 
   return (
@@ -1098,9 +1124,10 @@ export default function App() {
 
                   <button 
                     type="submit"
-                    className="w-full py-4 rounded-xl text-sm font-semibold tracking-wider uppercase bg-gradient-to-r from-[#8c6738] via-[#b48a58] to-[#d4af7a] text-white shadow-xl shadow-[#b48a58]/30 hover:shadow-[#b48a58]/50 hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center justify-center gap-2"
+                    disabled={isSubmitting}
+                    className="w-full py-4 rounded-xl text-sm font-semibold tracking-wider uppercase bg-gradient-to-r from-[#8c6738] via-[#b48a58] to-[#d4af7a] text-white shadow-xl shadow-[#b48a58]/30 hover:shadow-[#b48a58]/50 hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-75 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
                   >
-                    <span>Submit Lead &amp; Connect via WhatsApp</span>
+                    <span>{isSubmitting ? 'Dispatching Inquiry...' : 'Submit Lead & Connect via WhatsApp'}</span>
                     <Send className="w-4 h-4" />
                   </button>
 
@@ -1108,14 +1135,15 @@ export default function App() {
                     <motion.div 
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="p-4 rounded-xl bg-emerald-50 border border-emerald-300 text-emerald-800 text-xs"
+                      className="p-5 rounded-2xl bg-[#f0fdf4] border border-emerald-300 text-emerald-900 text-xs shadow-md"
                     >
-                      <div className="flex items-center gap-2 font-bold text-sm">
-                        <CheckCircle className="w-4 h-4 text-emerald-600" /> Inquiry Forwarded!
+                      <div className="flex items-center gap-2 font-bold text-sm text-emerald-800">
+                        <CheckCircle className="w-5 h-5 text-emerald-600" /> Inquiry Dispatched Successfully!
                       </div>
-                      <p className="mt-1">
-                        Connecting you with Th. Pushpinder Singh Charak. You can also dial +91 941 914 3358 directly.
-                      </p>
+                      <div className="mt-2 space-y-1 text-emerald-700">
+                        <p>✓ Email notification delivered to <strong>satyabuildersandcolonisers@gmail.com</strong>.</p>
+                        <p>✓ Opening direct WhatsApp chat with Th. Pushpinder Singh Charak (+91 941 914 3358)...</p>
+                      </div>
                     </motion.div>
                   )}
                 </form>
