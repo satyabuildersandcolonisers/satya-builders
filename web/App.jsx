@@ -177,11 +177,11 @@ export default function App() {
               />
             </div>
             <div>
-              {/* Full company name: both lines styled harmoniously without shrinking Colonisers */}
+              {/* Full company name: unified in one color */}
               <span className="block font-serif text-base md:text-lg font-bold tracking-wider leading-tight text-[#181614] group-hover:text-[#b48a58] transition-colors">
                 SATYA BUILDERS
               </span>
-              <span className="block font-serif text-base md:text-lg font-bold tracking-wider leading-tight text-[#b48a58]">
+              <span className="block font-serif text-base md:text-lg font-bold tracking-wider leading-tight text-[#181614] group-hover:text-[#b48a58] transition-colors">
                 &amp; COLONISERS
               </span>
             </div>
@@ -275,9 +275,7 @@ export default function App() {
             className="font-serif text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-[#181614] mb-6 leading-tight"
           >
             Satya Builders <br className="hidden sm:block" />
-            <span className="bg-gradient-to-r from-[#8c6738] via-[#b48a58] to-[#d4af7a] bg-clip-text text-transparent">
-              &amp; Colonisers
-            </span>
+            &amp; Colonisers
           </motion.h1>
 
           {/* Sub-headline */}
@@ -877,7 +875,7 @@ export default function App() {
                     <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent" />
                     <div className="absolute bottom-4 left-4 right-4 text-center">
                       <span className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-white text-[#181614] shadow-md border border-[#eadfd0]">
-                        Founder &amp; Principal Consultant
+                        Founder
                       </span>
                     </div>
                   </div>
@@ -892,10 +890,7 @@ export default function App() {
                 </div>
                 
                 <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#181614]">
-                  Th. Pushpinder Singh{' '}
-                  <span className="bg-gradient-to-r from-[#8c6738] via-[#b48a58] to-[#d4af7a] bg-clip-text text-transparent">
-                    Charak
-                  </span>
+                  Th. Pushpinder Singh Charak
                 </h2>
                 
                 <p className="text-base sm:text-lg text-[#8c6738] font-semibold italic">
