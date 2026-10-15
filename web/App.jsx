@@ -43,7 +43,7 @@ import {
 // Local Asset Paths
 const ASSETS = {
   logo: './assets/logo-fitted.png',
-  founder: './assets/founder.jpeg',
+  founder: './assets/founder.jpeg?v=2',
   heroBg: './assets/hero-bg.jpg',
   project1: './assets/project-villa.png',
   commercial: './assets/commercial.jpg',
